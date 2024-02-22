@@ -1,0 +1,57 @@
+<%- include('./includes/header') %>
+<%- include('./includes/nav.ejs') %>
+<h1>Order Page</h1>
+
+<div class="container">
+  <div class="card">
+    <div class="container-fliud">
+      <div class="wrapper row">
+        <div class="preview col-md-6">
+
+          <div class="preview-pic tab-content">
+            <div class="tab-pane active" id="pic-1"><img style="width: 300px;height:300px;object-fit:cover" src="<%= image %>" />
+
+
+
+            </div>
+            <div class="details col-md-6">
+              <h3 class="product-title"><%= title  %></h3>
+              <div class="rating">
+                <div class="stars">
+                  <span class="fa fa-star checked"></span>
+                  <span class="fa fa-star checked"></span>
+                  <span class="fa fa-star checked"></span>
+                  <span class="fa fa-star"></span>
+                  <span class="fa fa-star"></span>
+                </div>
+                <span class="review-no">41 reviews</span>
+              </div>
+              <p class="product-description"><%= description %> <span>Rs. <%= price %></span></h4>
+              <p class="vote"><strong>91%</strong> of buyers enjoyed this product! <strong>(87
+                  votes)</strong></p>
+
+              <div class="action">
+                <button class="add-to-cart btn btn-default" type="button">add to cart</button>
+                <button class="like btn btn-default" type="button"><span class="fa fa-heart"></span></button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <form action="https://rc-epay.esewa.com.np/api/epay/main/v2/form" method="POST">
+      <input type="hidden" id="amount" name="amount" value="<%= price %>" required>
+      <input type="hidden" id="tax_amount" name="tax_amount" value="0" required>
+      <input type="hidden" id="total_amount" name="total_amount" value="<%= price %>" required>
+      <input type="hidden" id="transaction_uuid" name="transaction_uuid" value="<%= uid %>" required>
+      <input type="hidden" id="product_code" name="product_code" value="EPAYTEST" required>
+      <input type="hidden" id="product_service_charge" name="product_service_charge" value="0" required>
+      <input type="hidden" id="product_delivery_charge" name="product_delivery_charge" value="0" required>
+      <input type="hidden" id="success_url" name="success_url" value="http://127.0.0.1:8000/book/verify-esewa/<%= id %>" required>
+      <input type="hidden" id="failure_url" name="failure_url" value="http://127.0.0.1:8000" required>
+      <input type="hidden" id="signed_field_names" name="signed_field_names" value="total_amount,transaction_uuid,product_code" required>
+      <input type="hidden" id="signature" name="signature" value="<%= signature %>" required>
+      <input value=" Submit" type="submit">
+    </form>
+
+    <%- include('./includes/footer.ejs') %>

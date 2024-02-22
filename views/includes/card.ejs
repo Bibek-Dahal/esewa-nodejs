@@ -1,0 +1,29 @@
+<% function truncateString(str, maxLength) { return str.length> maxLength ? str.substring(0, maxLength) + "...": str;}%>
+
+
+<div class="card shadow-sm p-2" style="width: 18rem;">
+  <div style="height: 200px;">
+
+    <img src="<%= image %>" class="card-img-top" alt="..." style="object-fit: cover;width:100%;height:100%">
+  </div>
+  <div class="card-body">
+    <h1>
+
+      <%= truncateString(title, 10) %>
+      <span style="font-size: 30px;color:cadetblue">
+        Rs.<%=price %>
+      </span>
+    </h1>
+    <p class="card-text">
+      <%= truncateString(description, 60) %>
+
+    </p>
+    <!-- <form action="" method="POST">
+                <input type="hidden" name="id" value="<%= id %>">
+                <input type="hidden" name="price" value="<%= price %>">
+                <button type="submit" class="btn btn-primary">Buy</button>
+
+            </form> -->
+    <a href="/book/buy/<%= id %>" role="button" class="btn btn-primary">Buy</a>
+  </div>
+</div>

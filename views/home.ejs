@@ -1,0 +1,21 @@
+<%- include('./includes/header') %>
+<%- include('./includes/nav.ejs') %>
+
+
+<%- include('./includes/carousel.ejs') %>
+
+<div class="row justify-content-center container">
+
+  <% books.forEach((item)=>{%>
+  <div class="col-12 col-sm-3">
+    <%- include('./includes/card.ejs', {id:item.id,title:item.title,description:item.description,price:item.price, image:item.image})%>
+
+  </div>
+
+  <% }) %>
+
+
+
+</div>
+
+<%- include('./includes/footer.ejs') %>
